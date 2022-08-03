@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import AddPokemonForm from "./components/addPokemonForm/AddPokemonForm";
+import PokemonList from "./components/pokemonList/PokemonList";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useFindPokemon } from "./api/services/findPokemon";
+import Operations from "./components/operations/Operations";
+import { useState } from "react";
+import Button from "./components/common/Button";
+const queryClient = new QueryClient();
 
 function App() {
+  const [pokemonData, setPokemonData] = useState();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
+        <h1>Listado de Pokemon</h1>
+        {/* <Button name={"Nuevo"} /> */}
+        <Operations setPokemonData={setPokemonData} />
+        <PokemonList pokemonData={pokemonData} />
+        <AddPokemonForm />
+      </div>
+    </QueryClientProvider>
   );
 }
 

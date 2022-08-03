@@ -1,0 +1,50 @@
+h2 {
+  text-align: center;
+  margin-top: 0;
+}
+
+.pokemonFormInputs {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.pokemonPowers {
+  display: flex;
+  gap: 1rem;
+}
+
+#labels {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+}
+
+#inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.pokemonFormData {
+  border: 3px solid lightgray;
+  padding: 1rem;
+}
+
+.pokemonFormDataAttributes {
+  display: flex;
+  justify-content: center;
+  gap: 15rem;
+}
+
+.inputText {
+  border-radius: 0.2rem;
+  border: 2px solid lightgray;
+  height: 30px;
+  box-shadow: 0 0 2px #719ece;
+}
+
+input:focus {
+  outline: none !important;
+  border: 1px solid red;
+}
