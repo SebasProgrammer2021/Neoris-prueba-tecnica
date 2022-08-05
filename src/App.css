@@ -32,7 +32,6 @@ table {
   overflow: hidden;
   overflow-y: auto;
   margin-bottom: 1.5rem;
-  border-bottom: 3px solid lightgray;
 }
 
 td {

@@ -7,9 +7,11 @@ const Button = ({
   icon,
   name,
   testid,
+  type
 }) => {
   return (
     <button
+      type={type}
       className={`${customStyles ? customStyles : "reusableButtonStyles"}`}
       data-testid={testid}
       disabled={disabled}

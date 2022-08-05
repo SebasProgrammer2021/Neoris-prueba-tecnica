@@ -1,32 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import useDeletePokemon from "../../api/services/deletePokemon";
 import useGetPokemons from "../../api/services/getpokemons";
 import Button from "../common/Button";
 import { useQueryClient } from "@tanstack/react-query";
 import Spinner from "../../images/spinner-2.gif";
+import Alert from "../common/alert/Alert";
+import handleClose from "../../helpers/handleClose";
 
-const PokemonList = ({ pokemonData, setPokemonToUpdate }) => {
+const PokemonList = ({
+  pokemonData,
+  setPokemonToUpdate,
+  setShowFormNewPokemon,
+  setPokemonData,
+}) => {
   const queryClient = useQueryClient();
   const { mutate, isLoading } = useDeletePokemon();
   const { data } = useGetPokemons();
+  const [alertMessage, setAlertMessage] = useState({
+    message: "",
+    show: false,
+  });
 
   const handleDelete = (pokemonId) => {
     mutate(pokemonId, {
       onSuccess: (data) => {
         if (data?.success) {
-          console.log(
-            "🚀 ~ file: PokemonList.jsx ~ line 13 ~ mutate ~ data",
-            data
-          );
-          queryClient.invalidateQueries(["GET_POKEMONS"]);
+          setAlertMessage({
+            message: "Pokemon borrado exitosamente!",
+            show: true,
+          });
+          queryClient.invalidateQueries(["FIND_POKEMON"]);
+          setPokemonData();
         }
       },
       onError: (error) => {
         if (error) {
-          console.log(
-            "🚀 ~ file: PokemonList.jsx ~ line 18 ~ mutate ~ error",
-            error
-          );
+          setAlertMessage({
+            message: error,
+            show: true,
+          });
         }
       },
     });
@@ -34,10 +46,18 @@ const PokemonList = ({ pokemonData, setPokemonToUpdate }) => {
 
   const handleUpdate = (pokemonToUpdate) => {
     setPokemonToUpdate(pokemonToUpdate);
+    setShowFormNewPokemon(true);
+  };
+
+  const hc = () => {
+    handleClose(setAlertMessage);
   };
 
   return (
     <div className="pokemonListContainer">
+      {alertMessage.show && (
+        <Alert handleClose={hc} message={alertMessage.message} />
+      )}
       <table className="custt">
         <thead>
           <tr>
