@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Button from "../common/Button";
+import Button from "../common/button/Button";
 import "./styles.css";
 import useCreatePokemon from "../../api/services/createPokemon";
 import { useQueryClient } from "@tanstack/react-query";
@@ -155,6 +155,7 @@ const AddPokemonForm = ({ pokemonToUpdate, setPokemonToUpdate }) => {
                   required: "Este campo es requerido",
                 })}
                 className="inputText"
+                data-testid="inputName"
                 id="name"
               ></input>
               <input
@@ -162,6 +163,7 @@ const AddPokemonForm = ({ pokemonToUpdate, setPokemonToUpdate }) => {
                   required: "Este campo es requerido",
                 })}
                 className="inputText"
+                data-testid="inputImage"
                 id="image"
               ></input>
             </div>
@@ -180,6 +182,7 @@ const AddPokemonForm = ({ pokemonToUpdate, setPokemonToUpdate }) => {
                   {...register("attack", {
                     required: "Este campo es requerido",
                   })}
+                  data-testid="rangeAttack"
                   type="range"
                   min={0}
                   max={100}
@@ -196,6 +199,7 @@ const AddPokemonForm = ({ pokemonToUpdate, setPokemonToUpdate }) => {
                   {...register("defense", {
                     required: "Este campo es requerido",
                   })}
+                  data-testid="rangeDefence"
                   type="range"
                   min="0"
                   max="100"
@@ -214,6 +218,7 @@ const AddPokemonForm = ({ pokemonToUpdate, setPokemonToUpdate }) => {
             handleFunction={onSubmit}
             icon={"https://img.icons8.com/ios-glyphs/30/FFFFFF/save--v1.png"}
             name={"Guardar"}
+            testid="saveBtn"
             type="submit"
           />
           <Button
@@ -222,6 +227,7 @@ const AddPokemonForm = ({ pokemonToUpdate, setPokemonToUpdate }) => {
             }}
             icon={"https://img.icons8.com/ios-glyphs/30/FFFFFF/multiply.png"}
             name={"Cancelar"}
+            testid="cancelBtn"
           />
         </div>
       </form>

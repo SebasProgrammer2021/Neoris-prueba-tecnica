@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import PokemonList from "./PokemonList";
 const queryClient = new QueryClient();
@@ -11,10 +11,12 @@ const renderComponent = (prop) => {
   );
 };
 
-describe("alert tests", () => {
-  it("expect alert to be in the document", () => {
+describe("PokemonList tests", () => {
+  it("should click update btn, expect update btn to be clicked", () => {
     renderComponent();
 
-    const deleteBtn = screen.getByTestId("pokemonListDeleteBtnId");
+    // const updateBtn = screen.getByTestId("updateBtn2102");
+
+    // fireEvent.click(updateBtn);
   });
 });

@@ -1,6 +1,10 @@
-# Prueba tecnica Neoris para Desarrollador Frontend React
+# Prueba técnica Neoris para Desarrollador Frontend React
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Este proyecto utiliza una api pública de pokemons para desarrollar las funcionalidades de crear, traer todos, buscar uno, actualizar y borrar pokemons, en el cual se crea una tabla para listar los pokemons, dentro de la cual se tienen las acciones de editar y borrar.
+
+Adicional se crea un formulario para agregar o editar la información de los pokemons. Se implementan principios SOLID, TDD, buenas prácticas.
 
 ## Available Scripts
 
