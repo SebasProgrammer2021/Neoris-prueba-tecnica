@@ -1,38 +1,117 @@
 .App {
-  text-align: center;
+  margin: 3rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 18px;
+  letter-spacing: 0px;
+  word-spacing: 0px;
+  color: #000000;
+  font-weight: normal;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+table,
+th,
+td {
+  border: 3px solid lightgray;
+  border-collapse: collapse;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+table {
+  width: 100%;
+  height: 200px;
+}
+
+.pokemonListContainer {
+  height: 15rem;
+  overflow: hidden;
+  overflow-y: auto;
+  margin-bottom: 1.5rem;
+  border-bottom: 3px solid lightgray;
+}
+
+td {
+  text-align: left;
+  padding-left: 10px;
+}
+
+th {
+  padding: 0.8rem;
+}
+
+/* CUSTOM STYLES */
+.headerStyles {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.tableActionsStyles {
+  text-align: center;
+  padding-left: 0;
+}
+
+.pokemonListImg {
+  height: 50px;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 10px 0;
+}
+
+.reusableButtonStyles {
+  align-items: center;
+  background-color: #673ab7d9;
   color: white;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 3px;
+  border: #535cc3;
 }
 
-.App-link {
-  color: #61dafb;
+.reusableButtonStyles img {
+  height: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.customStyles {
+  background-color: #fff;
+  border: none;
+}
+
+.customStyles img {
+  height: 20px;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #cfcad8d9;
+  cursor: not-allowed;
+}
+
+.pokemonListActionsSpinner {
+  height: 20px;
+  width: 20px;
+  align-items: center;
+}
+
+.pokemonListDeleteBtn {
+  margin-left: 20px;
+}
+
+.operationsSearchInput {
+  background: url(https://img.icons8.com/ios-glyphs/30/737373/search--v1.png)
+    no-repeat scroll 8px 6px;
+  padding-left: 35px;
+  padding-bottom: 5px;
+  height: 30px;
+  background-size: 20px;
+  border: 2px solid lightgray;
 }
