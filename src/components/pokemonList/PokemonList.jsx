@@ -11,7 +11,6 @@ const PokemonList = ({ pokemonData, setPokemonToUpdate }) => {
   const { data } = useGetPokemons();
 
   const handleDelete = (pokemonId) => {
-    // console.log("deleting", pokemonId);
     mutate(pokemonId, {
       onSuccess: (data) => {
         if (data?.success) {
@@ -63,6 +62,9 @@ const PokemonList = ({ pokemonData, setPokemonToUpdate }) => {
               <td className="tableActionsStyles">
                 <Button
                   customStyles="customStyles"
+                  handleFunction={() => {
+                    handleUpdate(pokemonData);
+                  }}
                   icon={
                     "https://img.icons8.com/pastel-glyph/64/7950F2/pencil--v2.png"
                   }
@@ -124,6 +126,7 @@ const PokemonList = ({ pokemonData, setPokemonToUpdate }) => {
                       handleFunction={() => {
                         handleDelete(pokemon.id);
                       }}
+                      testid="pokemonListDeleteBtnId"
                       customStyles="customStyles pokemonListDeleteBtn"
                       icon={
                         "https://img.icons8.com/material-rounded/24/7950F2/delete-forever.png"

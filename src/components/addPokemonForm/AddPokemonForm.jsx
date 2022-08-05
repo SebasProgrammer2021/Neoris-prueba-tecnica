@@ -4,6 +4,7 @@ import "./styles.css";
 import useCreatePokemon from "../../api/services/createPokemon";
 import { useQueryClient } from "@tanstack/react-query";
 import useUpdatePokemon from "../../api/services/updatePokemon";
+import Alert from "../common/alert/Alert";
 
 const AddPokemonForm = ({ pokemonToUpdate, setPokemonToUpdate }) => {
   const queryClient = useQueryClient();
@@ -19,13 +20,10 @@ const AddPokemonForm = ({ pokemonToUpdate, setPokemonToUpdate }) => {
     type: "Dragon",
     idAuthor: 2999,
   });
-
-  const handleChange = (e) => {
-    setPokemonAttributes({
-      ...pokemonAttributes,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const [alertMessage, setAlertMessage] = useState({
+    message: "",
+    show: false,
+  });
 
   const handleUpdate = () => {
     let data = {
@@ -50,31 +48,24 @@ const AddPokemonForm = ({ pokemonToUpdate, setPokemonToUpdate }) => {
     });
   };
 
-  console.log(
-    "🚀 ~ file: AddPokemonForm.jsx ~ line 22 ~ AddPokemonForm ~ pokemonAttributes",
-    pokemonAttributes
-  );
-
   const handleSubmit = () => {
     pokemonToUpdate
       ? handleUpdate()
       : mutate(pokemonAttributes, {
           onSuccess: (data) => {
-            console.log(
-              "🚀 ~ file: AddPokemonForm.jsx ~ line 30 ~ handleSubmit ~ data",
-              data
-            );
-            queryClient.invalidateQueries(["GET_POKEMONS"]);
-
-            // if (data.status) {
-
-            // }
+            if (data.id) {
+              setAlertMessage({
+                message: "Pokemon agregado exitosamente!",
+                show: true,
+              });
+              queryClient.invalidateQueries(["GET_POKEMONS"]);
+            }
           },
           onError: (error) => {
-            console.log(
-              "🚀 ~ file: AddPokemonForm.jsx ~ line 42 ~ handleSubmit ~ error",
-              error
-            );
+            setAlertMessage({
+              message: error,
+              show: true,
+            });
           },
         });
   };
@@ -90,6 +81,13 @@ const AddPokemonForm = ({ pokemonToUpdate, setPokemonToUpdate }) => {
       hp: 100,
       type: "Dragon",
       idAuthor: 2999,
+    });
+  };
+
+  const handleClose = () => {
+    setAlertMessage({
+      message: "",
+      show: false,
     });
   };
 
@@ -124,8 +122,23 @@ const AddPokemonForm = ({ pokemonToUpdate, setPokemonToUpdate }) => {
     pokemonToUpdate,
   ]);
 
+  const handleChange = (e) => {
+    console.log(e.target.value);
+    setPokemonAttributes({
+      ...pokemonAttributes,
+      [e.target.name]: e.target.value,
+    });
+  };
+  console.log(
+    "🚀 ~ file: AddPokemonForm.jsx ~ line 23 ~ AddPokemonForm ~ pokemonAttributes",
+    pokemonAttributes.defense
+  );
+
   return (
     <div className="pokemonFormData">
+      {alertMessage.show && (
+        <Alert handleClose={handleClose} message={alertMessage.message} />
+      )}
       <h2>{"Nuevo"} Pokemon</h2>
       <div className="pokemonFormDataAttributes">
         <div className="pokemonFormInputs">
@@ -179,7 +192,7 @@ const AddPokemonForm = ({ pokemonToUpdate, setPokemonToUpdate }) => {
                 max="100"
                 step="1"
                 name="defense"
-                id="defence"
+                id="defense"
                 defaultValue={pokemonAttributes?.defense}
                 onChange={handleChange}
               />
