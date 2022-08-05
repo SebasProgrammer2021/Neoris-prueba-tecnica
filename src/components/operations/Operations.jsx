@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useFindPokemon } from "../../api/services/findPokemon";
 import Button from "../common/Button";
 
-const Operations = ({ setPokemonData }) => {
+const Operations = ({ setShowFormNewPokemon, setPokemonData }) => {
   const [idPokemon, setIdPokemon] = useState();
-  const { data, isLoading } = useFindPokemon(idPokemon);
+  const { data } = useFindPokemon(idPokemon);
 
   const handleSearch = (e) => {
     setIdPokemon(e.target.value);
+  };
+
+  const handleShowForm = () => {
+    setShowFormNewPokemon(true);
   };
 
   useEffect(() => {
@@ -28,6 +32,7 @@ const Operations = ({ setPokemonData }) => {
       </div>
       <div>
         <Button
+          handleFunction={handleShowForm}
           icon={"https://img.icons8.com/android/24/FFFFFF/plus.png"}
           name={"Nuevo"}
         />

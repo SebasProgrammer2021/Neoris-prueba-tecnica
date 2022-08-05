@@ -9,20 +9,28 @@ const queryClient = new QueryClient();
 function App() {
   const [pokemonData, setPokemonData] = useState();
   const [pokemonToUpdate, setPokemonToUpdate] = useState();
+  const [showFormNewPokemon, setShowFormNewPokemon] = useState(false);
 
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App">
         <h1>Listado de Pokemon</h1>
-        <Operations setPokemonData={setPokemonData} />
+        <Operations
+          setPokemonData={setPokemonData}
+          setShowFormNewPokemon={setShowFormNewPokemon}
+        />
         <PokemonList
           pokemonData={pokemonData}
           setPokemonToUpdate={setPokemonToUpdate}
+          setShowFormNewPokemon={setShowFormNewPokemon}
+          setPokemonData={setPokemonData}
         />
-        <AddPokemonForm
-          pokemonToUpdate={pokemonToUpdate}
-          setPokemonToUpdate={setPokemonToUpdate}
-        />
+        {showFormNewPokemon && (
+          <AddPokemonForm
+            pokemonToUpdate={pokemonToUpdate}
+            setPokemonToUpdate={setPokemonToUpdate}
+          />
+        )}
       </div>
     </QueryClientProvider>
   );

@@ -32,7 +32,6 @@ table {
   overflow: hidden;
   overflow-y: auto;
   margin-bottom: 1.5rem;
-  border-bottom: 3px solid lightgray;
 }
 
 td {
@@ -115,3 +114,35 @@ button:disabled {
   background-size: 20px;
   border: 2px solid lightgray;
 }
+
+.alertContainer {
+  background-color: green;
+  position: absolute;
+  width: 300px;
+  top: 20px;
+  right: 45%;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.alertContainer p {
+  margin: 0;
+  border: 2px solid white;
+  padding: 1rem;
+  font-size: 20px;
+}
+
+.alertContainer button {
+  display: flex;
+  justify-content: end;
+  background-color: green;
+  border: none;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.alertContainer img {
+  height: 20px;
+}
+
