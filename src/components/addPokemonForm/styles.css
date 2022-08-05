@@ -1,6 +1,16 @@
 h2 {
   text-align: center;
   margin-top: 0;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 18px;
+  letter-spacing: 0px;
+  word-spacing: 0px;
+  color: #000000;
+  font-weight: normal;
+  text-decoration: none;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
 }
 
 .pokemonFormInputs {
@@ -12,9 +22,16 @@ h2 {
 .pokemonPowers {
   display: flex;
   gap: 1rem;
+  margin: 8px 0;
 }
 
 #labels {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+#rangeLabels {
   display: flex;
   flex-direction: column;
   gap: 2.2rem;
@@ -23,7 +40,7 @@ h2 {
 #inputs {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 2.2rem;
 }
 
 .pokemonFormData {
@@ -47,4 +64,15 @@ h2 {
 input:focus {
   outline: none !important;
   border: 1px solid red;
+}
+
+.actionsButtons {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+input[type="range"] {
+  accent-color: purple;
 }

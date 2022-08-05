@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useFindPokemon } from "../../api/services/findPokemon";
+import Button from "../common/Button";
 
 const Operations = ({ setPokemonData }) => {
   const [idPokemon, setIdPokemon] = useState();
@@ -17,11 +18,19 @@ const Operations = ({ setPokemonData }) => {
     <div id="header" className="headerStyles">
       <div>
         <div className="">
-          <input type="text" onChange={handleSearch} placeholder="Buscar" />
+          <input
+            className="operationsSearchInput"
+            type="text"
+            onChange={handleSearch}
+            placeholder="Buscar"
+          />
         </div>
       </div>
       <div>
-        <button id="headerNewPokemonBtn">Nuevo</button>
+        <Button
+          icon={"https://img.icons8.com/android/24/FFFFFF/plus.png"}
+          name={"Nuevo"}
+        />
       </div>
     </div>
   );
