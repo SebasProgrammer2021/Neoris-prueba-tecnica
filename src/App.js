@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import AddPokemonForm from "./components/addPokemonForm/AddPokemonForm";
 import PokemonList from "./components/pokemonList/PokemonList";
@@ -8,7 +8,7 @@ const queryClient = new QueryClient();
 
 function App() {
   const [pokemonData, setPokemonData] = useState();
-  const [pokemonToUpdate, setPokemonToUpdate] = useState();
+  const [pokemonToUpdate, setPokemonToUpdate] = React.useState();
   const [showFormNewPokemon, setShowFormNewPokemon] = useState(false);
 
   return (

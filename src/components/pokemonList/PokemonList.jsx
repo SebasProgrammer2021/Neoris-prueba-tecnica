@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useDeletePokemon from "../../api/services/deletePokemon";
 import useGetPokemons from "../../api/services/getpokemons";
-import Button from "../common/Button";
+import Button from "../common/button/Button";
 import { useQueryClient } from "@tanstack/react-query";
 import Spinner from "../../images/spinner-2.gif";
 import Alert from "../common/alert/Alert";
@@ -30,6 +30,7 @@ const PokemonList = ({
             show: true,
           });
           queryClient.invalidateQueries(["FIND_POKEMON"]);
+          queryClient.invalidateQueries(["GET_POKEMONS"]);
           setPokemonData();
         }
       },
@@ -125,6 +126,7 @@ const PokemonList = ({
                 <td>{pokemon.defense}</td>
                 <td className="tableActionsStyles">
                   <Button
+                    testid={`updateBtn${pokemon.id}`}
                     customStyles="customStyles"
                     icon={
                       "https://img.icons8.com/pastel-glyph/64/7950F2/pencil--v2.png"

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useFindPokemon } from "../../api/services/findPokemon";
-import Button from "../common/Button";
+import Button from "../common/button/Button";
 
 const Operations = ({ setShowFormNewPokemon, setPokemonData }) => {
   const [idPokemon, setIdPokemon] = useState();
