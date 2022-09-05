@@ -66,6 +66,7 @@ const PokemonList = ({
             <th>Imagen</th>
             <th>Ataque</th>
             <th>Defensa</th>
+            <th>Hp</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -80,6 +81,7 @@ const PokemonList = ({
               </td>
               <td>{pokemonData.attack}</td>
               <td>{pokemonData.defense}</td>
+              <td>{pokemonData.hp}</td>
               <td className="tableActionsStyles">
                 <Button
                   customStyles="customStyles"
@@ -124,6 +126,7 @@ const PokemonList = ({
                 </td>
                 <td>{pokemon.attack}</td>
                 <td>{pokemon.defense}</td>
+                <td>{pokemon.hp}</td>
                 <td className="tableActionsStyles">
                   <Button
                     testid={`updateBtn${pokemon.id}`}

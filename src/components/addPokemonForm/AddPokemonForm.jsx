@@ -73,6 +73,7 @@ const AddPokemonForm = ({ pokemonToUpdate, setPokemonToUpdate }) => {
             image: "",
             attack: "",
             defense: "",
+            hp: "",
           });
           queryClient.invalidateQueries(["GET_POKEMONS"]);
         }
@@ -90,6 +91,7 @@ const AddPokemonForm = ({ pokemonToUpdate, setPokemonToUpdate }) => {
   const pokemonImage = watch("image");
   const pokemonAttack = watch("attack");
   const pokemonDefence = watch("defense");
+  const pokemonHp = watch("hp");
 
   const onSubmit = (data) => {
     let formattedData = {
@@ -97,7 +99,7 @@ const AddPokemonForm = ({ pokemonToUpdate, setPokemonToUpdate }) => {
       image: data.image,
       attack: data.attack,
       defense: data.defense,
-      hp: 100,
+      hp: data.hp,
       type: "Dragon",
       idAuthor: 2999,
     };
@@ -113,6 +115,7 @@ const AddPokemonForm = ({ pokemonToUpdate, setPokemonToUpdate }) => {
       image: "",
       attack: "",
       defense: "",
+      hp: "",
     });
   };
 
@@ -122,16 +125,23 @@ const AddPokemonForm = ({ pokemonToUpdate, setPokemonToUpdate }) => {
       setValue("image", pokemonToUpdate?.image);
       setValue("attack", pokemonToUpdate?.attack);
       setValue("defense", pokemonToUpdate?.defense);
+      setValue("hp", pokemonToUpdate?.hp);
     }
   }, [isAddMode, pokemonToUpdate, setValue]);
 
   useEffect(() => {
-    if (pokemonName && pokemonImage && pokemonAttack && pokemonDefence) {
+    if (
+      pokemonName &&
+      pokemonImage &&
+      pokemonAttack &&
+      pokemonDefence &&
+      pokemonHp
+    ) {
       setIsNotAlowedToSave(false);
     } else {
       setIsNotAlowedToSave(true);
     }
-  }, [pokemonAttack, pokemonDefence, pokemonImage, pokemonName]);
+  }, [pokemonAttack, pokemonDefence, pokemonImage, pokemonName, pokemonHp]);
 
   return (
     <div className="pokemonFormData">
@@ -172,6 +182,7 @@ const AddPokemonForm = ({ pokemonToUpdate, setPokemonToUpdate }) => {
             <div id="rangeLabels">
               <label htmlFor="attack">Ataque:</label>
               <label htmlFor="defence">Defensa:</label>
+              <label htmlFor="defence">Hp:</label>
             </div>
             <div id="inputs">
               <div
@@ -206,6 +217,24 @@ const AddPokemonForm = ({ pokemonToUpdate, setPokemonToUpdate }) => {
                   step="1"
                   name="defense"
                   id="defense"
+                />
+                <span>100</span>
+              </div>
+              <div
+                style={{ display: "flex", gap: "1rem", alignItems: "center" }}
+              >
+                <span>0</span>
+                <input
+                  {...register("hp", {
+                    required: "Este campo es requerido",
+                  })}
+                  data-testid="rangeHp"
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="1"
+                  name="hp"
+                  id="hp"
                 />
                 <span>100</span>
               </div>
