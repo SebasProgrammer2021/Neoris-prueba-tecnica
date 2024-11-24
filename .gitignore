@@ -1,2 +1,8 @@
 /node_modules
 /coverage
+node_modules/
+dist/
+.env
+.DS_Store
+bun.lockb
+package-lock.json
