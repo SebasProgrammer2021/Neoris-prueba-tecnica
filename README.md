@@ -6,6 +6,8 @@ Este proyecto utiliza una api pública de pokemons para desarrollar las funciona
 
 Adicional se crea un formulario para agregar o editar la información de los pokemons. Se implementan principios SOLID, TDD, buenas prácticas.
 
+consume la api: https://bp-pokemons.herokuapp.com 
+
 ## Available Scripts
 
 In the project directory, you can run:
