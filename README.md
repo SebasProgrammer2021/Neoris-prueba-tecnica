@@ -8,6 +8,10 @@ Adicional se crea un formulario para agregar o editar la información de los pok
 
 consume la api: https://bp-pokemons.herokuapp.com 
 
+MEJORAS O TRABAJOS FUTUROS:
+
+- Reemplazarla por esta: https://pokeapi.co/
+
 ## Available Scripts
 
 In the project directory, you can run:
